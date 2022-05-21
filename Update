@@ -1,0 +1,25 @@
+
+import java.sql.*;
+
+public class Update {
+
+    public static void main(String a[]) throws Exception {
+
+        String url = "jdbc:mysql://localhost:3306/Customer";
+        String uname = "root";
+        String pass = "root324";
+        String query = "update customer set gender=? where id=?";
+
+        Connection con = DriverManager.getConnection(url, uname, pass);
+        Statement st = con.createStatement();
+
+        PreparedStatement prs = con.prepareStatement(query);
+
+        prs.setString(1, "F");
+        prs.setInt(2, 161);
+
+        prs.executeUpdate();
+        System.out.println("Updated");
+
+    }
+}
